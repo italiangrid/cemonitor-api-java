@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.glite.ce</groupId>
+    <artifactId>cream-parent</artifactId>
+    <version>1.15</version>
+  </parent>
+
+  <groupId>org.glite.ce.monitorapij</groupId>
+  <artifactId>cemonitor-api-java</artifactId>
+  <version>${cemonapi.version}</version>
+  <packaging>jar</packaging>
+
+  <build>
+  
+    <plugins>
+    
+      <plugin>
+        <groupId>org.apache.axis2</groupId>
+        <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+        <version>1.6.1</version>
+        <executions>
+
+          <execution>
+            <goals>
+              <goal>wsdl2code</goal>
+            </goals>
+            <configuration>
+              <packageName>org.glite.ce.monitorapij.ws</packageName>
+              <wsdlFile>${wsdls.path}/org.glite.ce-monitor_service.wsdl</wsdlFile>
+              <databindingName>adb</databindingName>
+              <namespaceURIs>
+                <namespaceURI>
+                  <uri>http://glite.org/ce/faults</uri>
+                  <packageName>org.glite.ce.faults</packageName>
+                </namespaceURI>
+                <namespaceURI>
+                  <uri>http://glite.org/ce/monitorapij/types</uri>
+                  <packageName>org.glite.ce.monitorapij.types</packageName>
+                </namespaceURI>
+                <namespaceURI>
+                  <uri>http://glite.org/ce/monitorapij/faults</uri>
+                  <packageName>org.glite.ce.monitorapij.faults</packageName>
+                </namespaceURI>
+                <namespaceURI>
+                  <uri>http://glite.org/wsdl/services/Monitor</uri>
+                  <packageName>org.glite.ce.monitorapij.ws</packageName>
+                </namespaceURI>
+              </namespaceURIs>
+              <generateServerSide>true</generateServerSide>
+              <generateAllClasses>true</generateAllClasses>
+              <generateServerSideInterface>true</generateServerSideInterface>
+              <generateServicesXml>true</generateServicesXml>
+              <unwrap>true</unwrap>
+              <syncMode>sync</syncMode>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>consumer</id>
+            <goals>
+              <goal>wsdl2code</goal>
+            </goals>
+            <configuration>
+              <packageName>org.glite.ce.monitorapij.ws</packageName>
+              <wsdlFile>${wsdls.path}/org.glite.ce-monitor_consumer_service.wsdl</wsdlFile>
+              <databindingName>adb</databindingName>
+              <namespaceURIs>
+                <namespaceURI>
+                  <uri>http://glite.org/ce/faults</uri>
+                  <packageName>org.glite.ce.faults</packageName>
+                </namespaceURI>
+                <namespaceURI>
+                  <uri>http://glite.org/ce/monitorapij/types</uri>
+                  <packageName>org.glite.ce.monitorapij.types</packageName>
+                </namespaceURI>
+                <namespaceURI>
+                  <uri>http://glite.org/ce/monitorapij/faults</uri>
+                  <packageName>org.glite.ce.monitorapij.faults</packageName>
+                </namespaceURI>
+                <namespaceURI>
+                  <uri>http://glite.org/wsdl/services/Monitor</uri>
+                  <packageName>org.glite.ce.monitorapij.ws</packageName>
+                </namespaceURI>
+              </namespaceURIs>
+              <generateServerSide>false</generateServerSide>
+              <!-- generateAllClasses>true</generateAllClasses>
+              <generateServerSideInterface>true</generateServerSideInterface>
+              <generateServicesXml>true</generateServicesXml -->
+              <unwrap>true</unwrap>
+              <syncMode>sync</syncMode>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals><goal>jar</goal></goals>
+            <configuration>
+              <archive>
+                <index>true</index>
+                <manifest><addDefaultImplementationEntries/></manifest>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+
+  <dependencies>
+  
+    <dependency>
+      <groupId>org.glite.ce.commonj</groupId>
+      <artifactId>glite-ce-common-java</artifactId>
+      <version>${common.java.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2</artifactId>
+      <version>${axis2.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.ws.commons.axiom</groupId>
+      <artifactId>axiom-api</artifactId>
+      <version>${axiom.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>wsdl4j</groupId>
+      <artifactId>wsdl4j</artifactId>
+      <version>${wsdl4j.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${log4j.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
