@@ -49,12 +49,9 @@
                   <packageName>org.glite.ce.monitorapij.ws</packageName>
                 </namespaceURI>
               </namespaceURIs>
-              <generateServerSide>true</generateServerSide>
-              <generateAllClasses>true</generateAllClasses>
-              <generateServerSideInterface>true</generateServerSideInterface>
-              <generateServicesXml>true</generateServicesXml>
-              <unwrap>true</unwrap>
               <syncMode>sync</syncMode>
+              <generateServerSide>true</generateServerSide>
+              <generateServicesXml>true</generateServicesXml>
             </configuration>
           </execution>
 
@@ -86,11 +83,6 @@
                 </namespaceURI>
               </namespaceURIs>
               <generateServerSide>false</generateServerSide>
-              <!-- generateAllClasses>true</generateAllClasses>
-              <generateServerSideInterface>true</generateServerSideInterface>
-              <generateServicesXml>true</generateServicesXml -->
-              <unwrap>true</unwrap>
-              <syncMode>sync</syncMode>
             </configuration>
           </execution>
 
