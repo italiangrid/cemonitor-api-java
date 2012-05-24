@@ -8,7 +8,7 @@
     <version>1.15</version>
   </parent>
 
-  <groupId>org.glite.ce.monitorapij</groupId>
+  <groupId>org.glite.ce</groupId>
   <artifactId>cemonitor-api-java</artifactId>
   <version>${cemonapi.version}</version>
   <packaging>jar</packaging>
@@ -108,7 +108,7 @@
             <configuration>
               <archive>
                 <index>true</index>
-                <manifest><addDefaultImplementationEntries/></manifest>
+                <manifest><addDefaultSpecificationEntries/></manifest>
               </archive>
             </configuration>
           </execution>
@@ -123,8 +123,8 @@
   <dependencies>
   
     <dependency>
-      <groupId>org.glite.ce.commonj</groupId>
-      <artifactId>glite-ce-common-java</artifactId>
+      <groupId>org.glite.ce</groupId>
+      <artifactId>cream-common</artifactId>
       <version>${common.java.version}</version>
       <scope>compile</scope>
     </dependency>
