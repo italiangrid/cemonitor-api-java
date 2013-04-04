@@ -9,6 +9,7 @@
 
   <properties>
     <rpm.release>1</rpm.release>
+    <rpm.pkgname>glite-ce-monitor-api-java</rpm.pkgname>
   </properties>
   
   <parent>
