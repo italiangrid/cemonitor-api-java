@@ -32,7 +32,7 @@ import java.io.Serializable;
 import java.net.URI;
 import java.util.Calendar;
 
-import org.glite.ce.monitorapij.types.CEResource;
+import org.glite.ce.commonj.CEResource;
 import org.glite.ce.monitorapij.resource.Resource;
 import org.glite.ce.monitorapij.types.Subscription;
 

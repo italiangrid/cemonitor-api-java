@@ -30,7 +30,7 @@ import java.io.ObjectOutput;
 import java.io.ObjectInput;
 
 import org.apache.log4j.Logger;
-import org.glite.ce.monitorapij.types.CEResource;
+import org.glite.ce.commonj.CEResource;
 import org.glite.ce.monitorapij.types.TopicEvent;
 
 import java.util.Calendar;
