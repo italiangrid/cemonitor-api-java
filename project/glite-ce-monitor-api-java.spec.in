@@ -1,0 +1,45 @@
+Summary: Java libraries for the CEMonitor service
+Name: @PKGNAME@
+Version: @PKGVERSION@
+Release: @PKGRELEASE@
+License: Apache Software License
+Vendor: EMI
+URL: http://glite.cern.ch/
+Group: System Environment/Libraries
+BuildArch: noarch
+BuildRequires: maven
+Requires: axis2, glite-ce-common-java
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+AutoReqProv: yes
+Source: %{name}.tar.gz
+
+%description
+Java libraries for the CEMonitor service
+
+%prep
+ 
+
+%setup -c -q
+
+%build
+mvn @MVNOPTS@ compile
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}
+mvn @MVNOPTS@ install
+mkdir -p %{buildroot}/usr/share/java
+cp %{_builddir}/%{name}-%{version}/target/cemonitor-api-java-@PKGVERSION@.jar %{buildroot}/usr/share/java/glite-ce-monitor-api-java.jar
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+/usr/share/java/glite-ce-monitor-api-java.jar
+
+%changelog
+* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+- New major release
+
+
